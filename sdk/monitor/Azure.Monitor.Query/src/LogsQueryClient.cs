@@ -224,7 +224,7 @@ namespace Azure.Monitor.Query
         }
 
         /// <summary>
-        /// Query a Log Analytics workspace with a query that includes a bronze table asynchronously.
+        /// Call the search API of Log Analytics asynchronously. can be used for querying Bronze Logs Tables.
         /// </summary>
         /// <param name="workspaceId">The workspace ID to include in the query (<c>xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx</c>).</param>
         /// <param name="query">The Kusto query to fetch the logs.</param>
@@ -232,7 +232,7 @@ namespace Azure.Monitor.Query
         /// <param name="options">The <see cref="LogsQueryOptions"/> to configure the query.</param>
         /// <param name="cancellationToken">The <see cref="CancellationToken"/> to use.</param>
         /// <returns>The <see cref="LogsQueryResult"/> with the query results.</returns>
-        public virtual async Task<Response<LogsQueryResult>> QueryWorkspaceWithBronzeTableAsync(string workspaceId, string query, QueryTimeRange timeRange, LogsQueryOptions options = null, CancellationToken cancellationToken = default)
+        public virtual async Task<Response<LogsQueryResult>> SearchWorkspaceAsync(string workspaceId, string query, QueryTimeRange timeRange, LogsQueryOptions options = null, CancellationToken cancellationToken = default)
         {
             using DiagnosticScope scope = _clientDiagnostics.CreateScope($"{nameof(LogsQueryClient)}.{nameof(QueryWorkspace)}");
             scope.Start();
@@ -247,7 +247,7 @@ namespace Azure.Monitor.Query
             }
         }
         /// <summary>
-        /// Query a Log Analytics workspace with a query that includes a bronze table
+        /// Call the search API of Log Analytics synchronously. can be used for querying Bronze Logs Tables.
         /// </summary>
         /// <param name="workspaceId">The workspace ID to include in the query (<c>xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx</c>).</param>
         /// <param name="query">The Kusto query to fetch the logs.</param>
@@ -255,7 +255,7 @@ namespace Azure.Monitor.Query
         /// <param name="options">The <see cref="LogsQueryOptions"/> to configure the query.</param>
         /// <param name="cancellationToken">The <see cref="CancellationToken"/> to use.</param>
         /// <returns>The <see cref="LogsQueryResult"/> with the query results.</returns>
-        public virtual Response<LogsQueryResult> QueryWorkspaceWithBronzeTable(string workspaceId, string query, QueryTimeRange timeRange, LogsQueryOptions options = null, CancellationToken cancellationToken = default)
+        public virtual Response<LogsQueryResult> SearchWorkspace(string workspaceId, string query, QueryTimeRange timeRange, LogsQueryOptions options = null, CancellationToken cancellationToken = default)
         {
             using DiagnosticScope scope = _clientDiagnostics.CreateScope($"{nameof(LogsQueryClient)}.{nameof(QueryWorkspace)}");
             scope.Start();
